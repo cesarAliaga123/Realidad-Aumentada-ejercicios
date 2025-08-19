@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Test AR.js Interactivo</title>
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="ui">
+      <p>Contador: <span id="counter">0</span></p>
+      <button id="changeColor">Cambiar Color</button>
+      <div class="hint">Mover: WASD / Flechas · Subir: Q · Bajar: E</div>
+    </div>
+
+    <a-scene
+      embedded
+      arjs="sourceType: webcam; debugUIEnabled: false;"
+      renderer="antialias: true; alpha: true; ar: true;"
+    >
+      <a-marker preset="hiro" id="marker">
+        <a-entity
+          id="arModel"
+          gltf-model="url(../img/LittleMan.glb)"
+          position="0 0 0"
+          scale="0.5 0.5 0.5"
+          rotation="0 0 0"
+          move-with-keys="speed: 0.02"
+          animation__spin="property: rotation;
+                            startEvents: spin;
+                            from: 0 0 0;
+                            to: 0 360 0;
+                            dur: 1000;
+                            easing: linear"
+        >
+        </a-entity>
+      </a-marker>
+      <a-entity camera></a-entity>
+    </a-scene>
+
+    <script src="script.js"></script>
+  </body>
+</html>
